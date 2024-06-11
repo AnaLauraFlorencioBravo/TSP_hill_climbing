@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>API para resolver el TSP</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <style>
+        body {
+            background-color: #f5f5f5; /* Color de fondo */
+        }
+
+        .container {
+            text-align: center;
+            margin-top: 100px;
+        }
+
+        h1 {
+            color: #ff9900; /* Color de título */
+        }
+
+        #ejecutarButton {
+            background-color: #ff9900; /* Color de fondo del botón */
+            border: none;
+        }
+
+        #ejecutarButton:hover {
+            background-color: #ff6600; /* Color de fondo del botón al pasar el cursor */
+        }
+
+        #resultado {
+            margin-top: 20px;
+            color: #333; /* Color del texto del resultado */
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>API para resolver el TSP</h1>
+        <button id="ejecutarButton" class="btn btn-warning">RESOLVER</button>
+        <div id="resultado"></div>
+    </div>
+
+    <script>
+        document.getElementById("ejecutarButton").addEventListener("click", function() {
+            // Realizar una solicitud AJAX a tu API
+            var xhr = new XMLHttpRequest();
+            xhr.open("GET", "/resolver_tsp", true);
+
+            xhr.onreadystatechange = function() {
+                if (xhr.readyState === 4 && xhr.status === 200) {
+                    // La solicitud se completó con éxito, procesa la respuesta JSON
+                    var respuesta = JSON.parse(xhr.responseText);
+                    
+                    // Muestra la ruta y la distancia total en la página
+                    var resultadoDiv = document.getElementById("resultado");
+                    resultadoDiv.innerHTML = "<h2>RUTAS OBTENIDAS:</h2><p>" + respuesta.ruta.join(" ----> ") + "</p>" + "<h2>DISTANCIA TOTAL:</h2><p>" + respuesta.distancia_total + "</p>";
+                }
+            };
+            
+            xhr.send();
+        });
+    </script>
+</body>
+</html>

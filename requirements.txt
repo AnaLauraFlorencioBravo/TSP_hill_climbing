@@ -1,0 +1,37 @@
+La compañia X y asociados otorga las siguientes prestaciones a sus trabajadores:
+
+a) 45 dias de aguinaldo en caso de que un trabajador trabaje todo el año o la parte proporcional de acuerdo a los dias laborados.(regla de 3)
+365=45 dias de aguinaldo
+
+b) 7.3% de salario por cada mes laborado completo por concepto de gratificación.
+
+c) 5.8% de prima vacacional por cada mes laborado completo.
+
+Calcule el total de prestaciones a pagar a cada empleado y el total a pagar.
+
+
+saber:
+
+sueldo
+dias laborados
+
+------------------------------------------------------------------------------------------------------------------
+# Datos del empleado
+salario = 25000  # Salario mensual
+dias_laborados = 182  # Número de días laborados
+meses_laborados_completos = 6  # Número de meses laborados completos
+
+# Calcula el aguinaldo proporcional
+aguinaldo_proporcional = (dias_laborados / 365) * 45
+
+# Calcula la gratificación
+gratificacion = (salario * 0.073) * meses_laborados_completos
+
+# Calcula la prima vacacional
+prima_vacacional = (salario * 0.058) * meses_laborados_completos
+
+# Calcula el total de prestaciones
+total_prestaciones = aguinaldo_proporcional + gratificacion + prima_vacacional
+
+# Imprime el total de prestaciones
+print("Total de prestaciones a pagar al empleado:", total_prestaciones)
